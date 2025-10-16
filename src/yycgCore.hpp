@@ -55,8 +55,8 @@
 // -------------------------------------------------------------------------------------------------------------------------------------//
 // Include Guarde
 // -------------------------------------------------------------------------------------------------------------------------------------//
-#ifndef YYCG_APP_HPP
-#define YYCG_APP_HPP
+#ifndef YYCG_CORE_HPP
+#define YYCG_CORE_HPP
 // -------------------------------------------------------------------------------------------------------------------------------------//
 #ifdef __YYCG_BUILD__
 // -------------------------------------------------------------------------------------------------------------------------------------//
@@ -83,7 +83,8 @@
 // -------------------------------------------------------------------------------------------------------------------------------------//
 // Custom Object Header
 // -------------------------------------------------------------------------------------------------------------------------------------//
-#include "./yycgCore.hpp"
+#include "./ListTokenIDs.hpp"
+#include "./ListDecorateTokens.hpp"
 // -------------------------------------------------------------------------------------------------------------------------------------//
 
 
@@ -97,15 +98,78 @@
 // Standard Library Header
 // -------------------------------------------------------------------------------------------------------------------------------------//
 #include <iostream> // use <std::cout>
-#include <string>   // use <std::string>
+#include <string>   // use <string>
 
 #include <memory>   // use < std::unique_ptr , std::make_uniquer >
 
-#include <vector>   // use < std::vector >
+#include <vector>
+#include <algorithm>
+#include <random> 
+
+#include <chrono>
 // -------------------------------------------------------------------------------------------------------------------------------------//
 
+using TokenIDs  = std::vector<int>;
+using TokenText = std::vector<std::string>;
 
+using ScenarioTensor = std::vector<int>;
 
+class yycgCore
+{
+public:
+    yycgCore( std::string p_FileName );
+    ~yycgCore() = default;
+
+    // core->Setting().Geberate().Result();
+    yycgCore& Setting();
+    yycgCore& Generate();
+    yycgCore& Result();
+
+private:
+
+    std::string m_FileName;
+
+    // Tokens
+    TokenIDs  m_KeywordIDs;
+    TokenText m_KeywordText;
+
+    TokenIDs  m_TokenIDs;
+    TokenText m_TokenText;
+
+    // Tensor
+    ScenarioTensor m_ScenarioTensor;
+    ScenarioTensor m_AdditionalTransitionTensor;
+    constexpr static int EmbeddingDimention = 16;
+
+    // Number of generated tokens
+    constexpr static int KeywordRanges = 15;
+
+    // Restriction parameters, not yet used
+    constexpr static int MaxRepeat = 500;
+    constexpr static int MaxTokens = 50;
+
+    // It's code logic so don't mess with it
+    constexpr static int MinKeyword =  0;
+    constexpr static int MaxKeyword = (int)YYCG::E_KEYWORD::LIST_SIZE;
+    constexpr static int SwapCount = 15;
+
+    // Tokens
+    TokenIDs  helperRandomTokens();
+    TokenText helperEncodeKeyword( TokenIDs p_Keyword );
+    TokenIDs  helperSortTokens( TokenIDs p_Keyword );
+    TokenIDs  helperRandomSwapTokens( TokenIDs p_Keyword );
+
+    // Tensor
+    ScenarioTensor helperEmbeddingTokenToScenarioTensor( TokenIDs p_Keyword );
+    ScenarioTensor helperAdditionalScenarioTensor( ScenarioTensor p_tensor );
+
+    // I'm not going to call it from outside anyway, 
+    // so I'm wondering if I should change it to a direct call format.
+    yycgCore& helperLogKeyword( [[maybe_unused]] TokenIDs  p_Keyword );
+    yycgCore& helperLogText(    [[maybe_unused]] TokenText p_Keyword );
+    yycgCore& helperScenarioLog([[maybe_unused]] ScenarioTensor p_Scenario );
+
+};
 
 
 
