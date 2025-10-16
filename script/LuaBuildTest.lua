@@ -1,1 +1,1 @@
-print("Hello, World!")
+print("Test, Using by joedf's Lua builds.!")
