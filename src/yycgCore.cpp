@@ -242,6 +242,34 @@ ScenarioTensor yycgCore::helperEmbeddingTokenToScenarioTensor( TokenIDs p_Keywor
     constexpr int IntensityMaxID = (int)E_DECORATE_INTENSITY::LIST_SIZE - 1;
     std::uniform_int_distribution<> intensity_distribution( 0 , IntensityMaxID );
 
+    // 💡 D[3] の分布: E_DECORATE_INTENSITY の範囲 (0 から 4)
+    constexpr int Tmp1MaxID = (int)E_DECORATE_TMP1::LIST_SIZE - 1;
+    std::uniform_int_distribution<> tmp1_distribution( 0 , Tmp1MaxID );
+
+    // 💡 D[4] の分布: E_DECORATE_INTENSITY の範囲 (0 から 4)
+    constexpr int Tmp2MaxID = (int)E_DECORATE_TMP2::LIST_SIZE - 1;
+    std::uniform_int_distribution<> tmp2_distribution( 0 , Tmp2MaxID );
+
+    // 💡 D[5] の分布: E_DECORATE_INTENSITY の範囲 (0 から 4)
+    constexpr int Tmp3MaxID = (int)E_DECORATE_TMP3::LIST_SIZE - 1;
+    std::uniform_int_distribution<> tmp3_distribution( 0 , Tmp3MaxID );
+
+    // 💡 D[6] の分布: E_DECORATE_INTENSITY の範囲 (0 から 4)
+    constexpr int Tmp4MaxID = (int)E_DECORATE_TMP4::LIST_SIZE - 1;
+    std::uniform_int_distribution<> tmp4_distribution( 0 , Tmp4MaxID );
+
+    // 💡 D[7] の分布: E_DECORATE_INTENSITY の範囲 (0 から 4)
+    constexpr int Tmp5MaxID = (int)E_DECORATE_TMP5::LIST_SIZE - 1;
+    std::uniform_int_distribution<> tmp5_distribution( 0 , Tmp5MaxID );
+
+    // 💡 D[8] の分布: E_DECORATE_INTENSITY の範囲 (0 から 4)
+    constexpr int Tmp6MaxID = (int)E_DECORATE_TMP6::LIST_SIZE - 1;
+    std::uniform_int_distribution<> tmp6_distribution( 0 , Tmp6MaxID );
+
+    // 💡 D[9] の分布: E_DECORATE_INTENSITY の範囲 (0 から 4)
+    constexpr int Tmp7MaxID = (int)E_DECORATE_TMP7::LIST_SIZE - 1;
+    std::uniform_int_distribution<> tmp7_distribution( 0 , Tmp7MaxID );
+
     int current_excitement_value = 0;
 
     // トークンIDのリストをループ処理します
@@ -258,15 +286,26 @@ ScenarioTensor yycgCore::helperEmbeddingTokenToScenarioTensor( TokenIDs p_Keywor
         int random_intensity_id = intensity_distribution( t_RandomGenerator );
         result_tensor.push_back( random_intensity_id ); // D[2] : ランダムな強度ID
         
-        // 2. 残りの要素に 0 を埋め込みます
-        // D[3] から D[15] までの 13 要素
-        result_tensor.push_back(0); // D[3]
-        result_tensor.push_back(0); // D[4]
-        result_tensor.push_back(0); // D[5]
-        result_tensor.push_back(0); // D[6]
-        result_tensor.push_back(0); // D[7]
-        result_tensor.push_back(0); // D[8]
-        result_tensor.push_back(0); // D[9]
+        int random_tmp1_id = tmp1_distribution( t_RandomGenerator );
+        result_tensor.push_back(random_tmp1_id); // D[3]
+
+        int random_tmp2_id = tmp2_distribution( t_RandomGenerator );
+        result_tensor.push_back(random_tmp2_id); // D[4]
+
+        int random_tmp3_id = tmp3_distribution( t_RandomGenerator );
+        result_tensor.push_back(random_tmp3_id); // D[5]
+
+        int random_tmp4_id = tmp4_distribution( t_RandomGenerator );
+        result_tensor.push_back(random_tmp4_id); // D[6]
+
+        int random_tmp5_id = tmp5_distribution( t_RandomGenerator );
+        result_tensor.push_back(random_tmp5_id); // D[7]
+
+        int random_tmp6_id = tmp6_distribution( t_RandomGenerator );
+        result_tensor.push_back(random_tmp6_id); // D[8]
+
+        int random_tmp7_id = tmp7_distribution( t_RandomGenerator );
+        result_tensor.push_back(random_tmp7_id); // D[9]
 
         int action_value = YYCG::KEYWORD_TABLE[token_id].extimental; 
         current_excitement_value += action_value;

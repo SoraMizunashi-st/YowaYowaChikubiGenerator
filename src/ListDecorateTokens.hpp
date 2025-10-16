@@ -125,6 +125,83 @@ enum class E_DECORATE_INTENSITY : int
     LIST_SIZE
 };
 
+enum class E_DECORATE_TMP1 : int
+{
+    TMP1 ,
+    TMP2 ,
+    TMP3 ,
+    TMP4 ,
+    TMP5 ,
+    TMP6,
+    LIST_SIZE
+};
+
+enum class E_DECORATE_TMP2 : int
+{
+    TMP1 ,
+    TMP2 ,
+    TMP3 ,
+    TMP4 ,
+    TMP5 ,
+    TMP6,
+    LIST_SIZE
+};
+
+enum class E_DECORATE_TMP3 : int
+{
+    TMP1 ,
+    TMP2 ,
+    TMP3 ,
+    TMP4 ,
+    TMP5 ,
+    TMP6,
+    LIST_SIZE
+};
+
+enum class E_DECORATE_TMP4 : int
+{
+    TMP1 ,
+    TMP2 ,
+    TMP3 ,
+    TMP4 ,
+    TMP5 ,
+    TMP6,
+    LIST_SIZE
+};
+
+enum class E_DECORATE_TMP5 : int
+{
+    TMP1 ,
+    TMP2 ,
+    TMP3 ,
+    TMP4 ,
+    TMP5 ,
+    TMP6,
+    LIST_SIZE
+};
+
+enum class E_DECORATE_TMP6 : int
+{
+    TMP1 ,
+    TMP2 ,
+    TMP3 ,
+    TMP4 ,
+    TMP5 ,
+    TMP6,
+    LIST_SIZE
+};
+
+enum class E_DECORATE_TMP7 : int
+{
+    TMP1 ,
+    TMP2 ,
+    TMP3 ,
+    TMP4 ,
+    TMP5 ,
+    TMP6,
+    LIST_SIZE
+};
+
 
 // -------------------------------------------------------------------------------------------------------------------------------------//
 // Include Guarde

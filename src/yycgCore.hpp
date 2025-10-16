@@ -85,6 +85,7 @@
 // -------------------------------------------------------------------------------------------------------------------------------------//
 #include "./ListTokenIDs.hpp"
 #include "./ListDecorateTokens.hpp"
+#include "./TypeReservedConstants.hpp"
 // -------------------------------------------------------------------------------------------------------------------------------------//
 
 
@@ -120,7 +121,7 @@ public:
     yycgCore( std::string p_FileName );
     ~yycgCore() = default;
 
-    // core->Setting().Geberate().Result();
+    // core->Setting().Generate().Result();
     yycgCore& Setting();
     yycgCore& Generate();
     yycgCore& Result();
@@ -142,7 +143,7 @@ private:
     constexpr static int EmbeddingDimention = 16;
 
     // Number of generated tokens
-    constexpr static int KeywordRanges = 15;
+    constexpr static int KeywordRanges = 64;
 
     // Restriction parameters, not yet used
     constexpr static int MaxRepeat = 500;
