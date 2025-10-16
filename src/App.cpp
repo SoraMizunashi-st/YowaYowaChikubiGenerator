@@ -16,6 +16,13 @@
 // -------------------------------------------------------------------------------------------------------------------------------------//
 int main(int p_Argc, char* p_Argv[]) 
 {
+
+    auto start = std::chrono::high_resolution_clock::now();
+
+    std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++ " << std::endl;
+    std::cout << "This is Test Module YYCG Programs " << std::endl;
+    std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++ " << std::endl;
+
     // ---------------------------------------------------------------------------------------------------------------------------------//
     // Minimum check for number of arguments (must have at least the option itself)
     // ---------------------------------------------------------------------------------------------------------------------------------//
@@ -75,6 +82,14 @@ int main(int p_Argc, char* p_Argv[])
 
         // temporary success message
         std::cout << "Successfully executed YYCG process." << std::endl;
+
+        auto end = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+        std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++ " << std::endl;
+        std::cout << "Execution Time (Core Logic): " << duration.count() << " ms" << std::endl;
+        std::cout << "+++++++++++++++++++++++++++++++++++++++++++++++ " << std::endl;
+
         return 0; // normal termination
     }
     else 
